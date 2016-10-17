@@ -1,0 +1,16 @@
+package Exercici7;
+
+import Keyboard.*;
+
+public class Exercici7 {
+	public static void main(String args[]){
+		int hores;
+		int minuts;
+		int segons;
+		System.out.println("Especifica el numero de hores");
+		System.out.println("-----------------------------");
+		segons = Keyboard.readInt();
+		
+		
+	}
+}

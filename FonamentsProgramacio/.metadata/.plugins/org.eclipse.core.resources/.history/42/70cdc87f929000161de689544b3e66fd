@@ -1,0 +1,18 @@
+package Exercici9_prova;
+
+import Keyboard.*;
+
+public class Exercici9prova {
+	public static void main(String args[]){
+		int valor, resultat, residu, resultat2, resultat3, resultat4, resultat5, resultat6;
+		System.out.println("Especifica una quantitat");
+		System.out.println("------------------------");
+		valor = Keyboard.readInt();
+		residu = valor % 20000;
+		System.out.println(residu);
+		valor = residu / 10000;
+		System.out.println(valor);
+		
+		
+	}
+}

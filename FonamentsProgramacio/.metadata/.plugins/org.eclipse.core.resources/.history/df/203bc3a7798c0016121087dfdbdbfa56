@@ -1,0 +1,28 @@
+package Exercici6;
+
+import Keyboard.*;
+
+public class Exercici6 {
+	public static void main(String args[]){
+		int resultat;
+		int residu;
+		residu = 0;
+		System.out.println("Especifica el numero de segons");
+		System.out.println("------------------------------");
+		resultat = Keyboard.readDouble();
+		System.out.print(resultat);
+		System.out.print(" son: ");
+		resultat = resultat/60; 
+		residu = residu%60;
+		System.out.print(resultat);
+		System.out.print(" hores i ");
+		resultat = resultat/60; 
+		residu = residu%60;
+		System.out.print(resultat);
+		System.out.print(" i queden ");
+		resultat = resultat/60; 
+		residu = residu%60;
+		System.out.print(resultat);
+		System.out.print("segons");
+	}
+}

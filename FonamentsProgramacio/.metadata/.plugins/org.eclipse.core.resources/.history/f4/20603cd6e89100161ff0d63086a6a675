@@ -1,0 +1,9 @@
+package Exercici1;
+
+public class Exercici1 {
+	public static void main (String args[]){
+		System.out.println("******Entrada dels valors******");
+		System.out.println("*******************************");
+		System.out.println("Entra el primer valor");
+	}
+}

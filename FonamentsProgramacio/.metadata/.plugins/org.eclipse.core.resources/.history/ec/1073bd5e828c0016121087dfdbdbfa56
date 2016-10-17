@@ -1,0 +1,27 @@
+package Exercici8;
+
+import Keyboard.*;
+
+public class Exercici8 {
+	public static void main(String args[]){
+		double m;
+		double i;
+		double p;
+		double n;
+		double r;
+		double potencia;
+		System.out.println("Especifica el preu de la casa");
+		System.out.println("-----------------------------");
+		p = Keyboard.readDouble();
+		System.out.println("Especifica l'interes hipotecari");
+		System.out.println("-------------------------------");
+		i = Keyboard.readDouble();
+		System.out.println("Especifica el numero d'anys");
+		System.out.println("---------------------------");
+		n = Keyboard.readDouble();
+		r = i/100*12;
+		potencia = Math.pow((1 + r), -12 * n);
+		m = ((80*r/100)/(1 - (1 + r)));
+		System.out.print("La mensualitat a pagar sera de ");	
+	}
+}

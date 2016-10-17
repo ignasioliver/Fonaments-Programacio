@@ -1,0 +1,15 @@
+package problemes;
+
+public class Aval1 {
+	public static void main (String [] args) {
+		int a;
+		int b;
+		a = 10;
+		b = 15;
+		a = b + 3 + 5 * b;
+		b = a - b * 2;
+		a = a + b;
+		System.out.println(a);
+		System.out.println(b);
+	}
+}

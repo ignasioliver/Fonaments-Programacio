@@ -1,0 +1,24 @@
+package Exercici3;
+
+import Keyboard.*;
+
+public class Exercici3 {
+	public static void main (String args[]){
+		double quantitat, euros, pessetes;
+		int eleccio;
+		System.out.print("Entra la quantitat a convertir ");
+		quantitat = Keyboard.readDouble();
+		System.out.println("Escull segons siguin euros o pessetes la quantitat indicada");
+		System.out.println("1.- Euros");
+		System.out.println("2.- Pessetes");
+		eleccio = Keyboard.readInt();
+		System.out.println("------------------------");
+		if (eleccio == 1){ //l'usuari vol passar a pessetes
+			pessetes = quantitat * 166.386;
+			System.out.println(quantitat + " euros son " + Math.round(pessetes) + "pessetes");
+		}else if (eleccio == 2){
+			euros = quantitat / 166.386;
+			System.out.println(quantitat + " euros son " + euros + "euros");
+		}else System.out.print("S'ha produit un error. Torna a executar el programa.");
+	}
+}

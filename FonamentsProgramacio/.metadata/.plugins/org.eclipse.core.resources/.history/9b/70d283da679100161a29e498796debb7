@@ -1,0 +1,21 @@
+package Exercici2;
+
+import Keyboard.*;
+
+public class Exercici2 {
+	public static void main (String args[]) {
+		double base;
+		double alcada;
+		System.out.println("Quina es la base?");
+		base = Keyboard.readDouble();
+		System.out.println("Quina es l'alcada?");
+		alcada = Keyboard.readDouble();
+		System.out.println("***PROGRAMA AREA TRIANGLE***");
+		System.out.println("Mida de la base: ");
+		System.out.println(base);
+		System.out.println("Mida de l'alcada: ");
+		System.out.println(alcada);
+		System.out.println("L'àrea del triangle es: ");
+		System.out.println((base * alcada) / 2);
+	}
+}

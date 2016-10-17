@@ -1,0 +1,19 @@
+package Exercici1;
+
+import Keyboard.*;
+
+public class Exercici1 {
+	public static void main (String args[]){
+		int a, b, c;
+		System.out.println("******Entrada dels valors******");
+		System.out.println("*******************************");
+		System.out.println("Entra el primer valor");
+		a = Keyboard.readInt();
+		System.out.println("Entra el segon valor");
+		b = Keyboard.readInt();
+		System.out.println("Entra el tercer valor");
+		c = Keyboard.readInt();
+		System.out.println("******Calcul de les expressions amb els valors: a=" + a + " i b=" + b + " i c =" + c + " ******");
+		System.out.println
+	}
+}
