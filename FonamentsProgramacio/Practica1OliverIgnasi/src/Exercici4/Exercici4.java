@@ -10,7 +10,7 @@ public class Exercici4 {
 		System.out.println("MIDES D'UNA PANTALLA DE TELEVISOR");
 		System.out.println("***** * *** ******** ** *********");
 		System.out.println();
-		System.out.print("Quina és la mida en polzades de la diagonal? ");
+		System.out.print("Quina es la mida en polzades de la diagonal? ");
 		
 		diagonalpolzades = Keyboard.readDouble();
 		costatpetitpolzades = diagonalpolzades * 0.49;
@@ -21,8 +21,8 @@ public class Exercici4 {
 		costatgrancm = Math.round(costatgranpolzades * 2.54);
 		
 		System.out.println();
-		System.out.println("Un televisor de " + diagonalpolzades + " polzades (" + diagonalcm + " centímetres)");
-		System.out.println("té un costat petit de " + costatpetitcm + " centímetres (" + costatpetitpolzades + " polzades)");
-		System.out.print("i un costat gran de " + costatgrancm + " centímetres (" + costatgranpolzades + " polzades)");
+		System.out.println("Un televisor de " + diagonalpolzades + " polzades (" + diagonalcm + " centimetres)");
+		System.out.println("te un costat petit de " + costatpetitcm + " centimetres (" + costatpetitpolzades + " polzades)");
+		System.out.print("i un costat gran de " + costatgrancm + " centimetres (" + costatgranpolzades + " polzades)");
 	}
 }
