@@ -9,16 +9,15 @@ public class Exercici3 {
 		System.out.print("Entra la quantitat a convertir ");
 		quantitat = Keyboard.readDouble();
 		System.out.println("Escull segons siguin euros o pessetes la quantitat indicada");
-		System.out.println("  1.- Euros");
-		System.out.println("  2.- Pessetes");
+		System.out.println("  1.- Euros\n  2.- Pessetes");
 		eleccio = Keyboard.readInt();
 		System.out.println("------------------------");
-		if (eleccio == 1){ //l'usuari vol passar a pessetes
+		if (eleccio == 1){
 			diners = quantitat * 166.386;
-			System.out.println(quantitat + " euros son " + Math.round(diners) + " pessetes");
+			System.out.println(quantitat + " euros són " + Math.round(diners) + " pessetes");
 		}else if (eleccio == 2){
 			diners = quantitat / 166.386;
-			System.out.println(quantitat + " euros son " + diners + " euros");
-		}else System.out.print("Seleccio no correcta");
+			System.out.println(quantitat + " pessetes són " + diners + " euros");
+		}else System.out.print("Selecció no correcta.");
 	}
 }
