@@ -18,7 +18,7 @@ public class Exercici5 {
 		else if (imc > 18 && imc < 25) System.out.println("això vol dir que és NORMAL");	
 		else if (imc > 25 && imc < 30) System.out.println("això indica OBESITAT LLEU");
 		else if (imc > 30 && imc < 35) System.out.println("això indica OBESITAT MODERADA");
-		else if (imc > 35 && imc < 40) System.out.println("això indica OBESITAT PREMORBIDA");
-		else if (imc > 40) System.out.println("això indica OBESITAT MORBIDA");
+		else if (imc > 35 && imc < 40) System.out.println("això indica OBESITAT PREMÒRBIDA");
+		else if (imc > 40) System.out.println("això indica OBESITAT MÒRBIDA");
 	}
 }
