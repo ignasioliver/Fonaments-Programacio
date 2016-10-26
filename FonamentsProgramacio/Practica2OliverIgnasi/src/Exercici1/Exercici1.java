@@ -14,7 +14,7 @@ public class Exercici1 {
 		b = Keyboard.readInt();
 		System.out.println("Entra el tercer valor:");
 		c = Keyboard.readInt();
-		System.out.println("******  Calcul de les expressions amb els valors: a=" + a + " i b=" + b + " i c =" + c + " ******");
+		System.out.println("******  Càlcul de les expressions amb els valors: a=" + a + " i b=" + b + " i c =" + c + " ******");
 		System.out.println("-----------------------------------------------------------------------------------------------");
 		bol = a > 3;
 		System.out.println("Resultat de: a > 3 es: " + bol);
