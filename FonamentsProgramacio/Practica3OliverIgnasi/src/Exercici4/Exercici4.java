@@ -4,7 +4,7 @@ import Keyboard.*;
 
 public class Exercici4 {
 	public static void main (String args[]){
-		int any, mes, dia;
+		int any, mes, dia, valor, residu = 0, numerosort = 0;
 		System.out.println("Especifica l'any en que vas neixer en format 4 xifres");
 		any = Keyboard.readInt();
 		while (any > 2016){
@@ -25,7 +25,17 @@ public class Exercici4 {
 			dia = Keyboard.readInt();
 
 		}
-
+		//Sumem tot el que tenim fins ara
+		valor = any + mes + dia;
+		while (valor > 9){
+			numerosort = 0;
+			while (valor > 0){
+				residu = valor % 10;
+				numerosort = numerosort + residu;
+				valor = valor / 10;
+			}
+			valor = numerosort;
+		} System.out.println("El numero de la sort de la data " + dia + "-" + mes + "-" + any + " es: " + numerosort);
 	}
 }
 // PREGUNTA: PUC UTILITZAR UN ALTRE WHILE PER FORMALITZAR ELS CASOS D'ERROR?
