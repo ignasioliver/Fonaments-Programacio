@@ -1,113 +1,66 @@
 package Exercici6;
 
 import Keyboard.*;
-
+//L'esquema detallat usat es troba al codi font en paper per tal que aquest sigui mes comprensible
 public class Exercici6 {
 	public static void main (String args[]){
-		int N, i = 0, j = 0, filamig = 0;
-		System.out.println("Introdueix N");
-		N = Keyboard.readInt();
-		while (i < N){ // 5 vegades
-			while (j < N){ //Per cada de les 5 vegades de i, j ho fara les vegades que sigui necessari:
-				//System.out.println("0");
-				System.out.println("0");
-				while (j == N / 2 - 1){ //aqui esta exactament al mig
-					while (filamig < N){
-						System.out.print("*");
-						filamig++;
-					}
-					System.out.println();
-					j++;
+		int numero, fila = 1, espais, asteriscs, ultimsespais, valormaximespai, asteriscsbaixos;
+		ultimsespais = 1; 
+		valormaximespai= ultimsespais + 1; 
+		char caracter;
+		System.out.println("Indica l'alcada. ha de ser un valor >1 i senar");
+		numero = Keyboard.readInt();
+		while (numero % 2 == 0){
+			System.out.println("Indica l'alcada. ha de ser un valor >1 i senar");
+			numero = Keyboard.readInt();
+		}
+		System.out.println("Indica el caracter a usar. Nomes son possibles '*' '$' '#'");
+		caracter = Keyboard.readChar();
+		while (caracter != 'a' || caracter != '$' || caracter != '#'){
+			System.out.println("Indica el caracter a usar. Nomes son possibles '*' '$' '#'");
+			caracter = Keyboard.readChar();
+		}
+		asteriscsbaixos = numero - 1; //asteriscs referents a la part d'abaix. 
+		// Com que vull que el seu comportament sigui independent a les iteracions, en declaro el seu valor inicial fora del bucle.
+		System.out.println("El rombe d'alcada " + numero + " es:");
+		while (fila <= numero){
+			if (fila < numero / 2 + 1){
+				espais = fila + 1;
+				while (espais <= numero / 2 + 1){
+					System.out.print(" ");
+					espais++;
 				}
-				j++;
+				asteriscs = 1;
+				while (asteriscs <= fila + fila - 1){
+					System.out.print(caracter);
+					asteriscs++;
+				}
+			}else if (fila == numero / 2 + 1){
+				asteriscs = 1;
+				while (asteriscs <= numero){
+					System.out.print(caracter);
+					asteriscs++;
+				}
+
+			}else if (fila > numero / 2 + 1){
+				ultimsespais = 1;
+				while (ultimsespais < valormaximespai){
+					System.out.print(" ");
+					ultimsespais++;
+				}
+				valormaximespai = ultimsespais + 1;
+				
+				asteriscs = 1;
+				while (asteriscs < asteriscsbaixos){
+					System.out.print(caracter);
+					asteriscs++;
+				}
+				asteriscsbaixos = asteriscsbaixos - 2;
 				
 			}
-			i++;
+			
+			System.out.println();
+			fila++;
 		}
-		
 	}
 }
-
-/*
-Print when:
-	i = N/2 + 1;
-	j = N/2 + 1;
-	
-
-
-*/
-
-
-
-
-
-
-
-/*
-NOT WORKING
-public class Exercici6 {
-	public static void main (String args[]){
-		int N, i = 0, j = 0, filamig = 0;
-		System.out.println("Introdueix N");
-		N = Keyboard.readInt();
-		while (i < N){
-			while ( j < N){
-				//if (i == N / 2 - 1) System.out.print("0");
-				System.out.println("0");
-				while (filamig < N){// imprimim fila del mig
-					if (j == N / 2 - 1) System.out.print("0");
-					filamig++;
-				}
-				//if (i == N / 2 + 1 && j == N / 2 + 1) System.out.println("*");
-				j++;
-			}
-			i++;
-		}
-		
-	}
-}
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*
-*PRETTY GOOD
-*
-*package Exercici6;
-
-import Keyboard.*;
-
-public class Exercici6 {
-	public static void main (String args[]){
-		int N, i = 0, j = 0, filamig = 0;
-		System.out.println("Introdueix N");
-		N = Keyboard.readInt();
-		while (i < N){ // 5 vegades
-			while (j < N){ //Per cada de les 5 vegades de i, j ho fara les vegades que sigui necessari:
-				//System.out.println("0");
-				System.out.println("0");
-				while (i == N / 2 ){
-					System.out.println("X");
-					i++;
-				}
-			j++;	
-			}
-			i++;
-		}
-		
-	}
-}
-*
-*
-*
-*
-*
-*/

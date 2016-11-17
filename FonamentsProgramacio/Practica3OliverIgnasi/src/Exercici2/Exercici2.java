@@ -1,7 +1,7 @@
 package Exercici2;
 
 import Keyboard.*;
-
+//L'esquema detallat usat es troba al codi font en paper per tal que aquest sigui mes comprensible
 public class Exercici2 {
 	public static void main (String args[]){
 		char entrada;
@@ -12,7 +12,7 @@ public class Exercici2 {
 		System.out.println("Entra primer caràcter");
 		while(stopper == false){
 			entrada = Keyboard.readChar();
-			if (entrada == '.') stopper = true;
+			if (entrada == '.') stopper = true; //Si l'entrada es un "." s'acaba el bucle 
 			else if (entrada == 'a' || entrada == 'A'){
 				As++;
 				if (As != 3)  System.out.println("Entra altre caràcter");
@@ -24,9 +24,3 @@ public class Exercici2 {
 		}System.out.print("El nombre de caràcters no vocals és de: \n" + vocals);
 	}
 }
-
-/* PREGUNTES:
-		1.- CAL QUE TINGUEM EN COMPTE LES MAJUSCULES? TANT DE LES As COM LA RESTA DE VOCALS.
-			I LA RESTA DE CARACTERS QUE NO SON CONSONANTS?
-		2.- HI HA CAP PROBLEMA SI NOMES UTILITZO UN BOOLEAN? (EN PODRIA UTILITZAR MES)
-*/
