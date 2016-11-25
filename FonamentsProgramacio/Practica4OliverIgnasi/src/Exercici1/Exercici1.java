@@ -10,7 +10,7 @@ public class Exercici1 {
 		if (n >= 3 && n <= 7 ||  n > 21 && n % 2 != 0 ) cadira(n);
 		else if (n >= 4 && n <= 6 || n > 7 && n < 21 || n > 21 && n % 2 == 0) tamboret(n);
 		else if (n < 3) System.out.print("Encara li cal un cotxet per assentar-se!");
-		else System.out.println("Valor no valid"); //pensar si realment cal afegir-lo
+		else System.out.println("Valor no valid");
 		
 	}
 		

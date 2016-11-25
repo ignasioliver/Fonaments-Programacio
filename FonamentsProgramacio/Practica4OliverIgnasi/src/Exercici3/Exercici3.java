@@ -7,7 +7,7 @@ public class Exercici3 {
 		int  n, numero, quinDigit = 0, suma = 0, resultatnumDigits;
 		System.out.println("Indica el numero del que vols saber la suma dels seus digits: ");
 		numero = Keyboard.readInt();
-		//amb resultatnumDigits evitem que per cada iteracio es cridi la funcio numDigits
+		//amb resultatnumDigits evitarem que per cada iteracio es cridi la funcio numDigits
 		resultatnumDigits = numDigits(numero);
 		for (n = 0; n < resultatnumDigits; n++){
 			suma = suma + (digit(numero, quinDigit));

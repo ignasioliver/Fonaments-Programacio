@@ -13,6 +13,7 @@ public class Exercici4 {
 		mes = lecturames(1, 12);
 		dia = lecturadia(mes, any);
 		data = any * 10000 + (mes * 100) + dia;
+		System.out.print("El teu numero es ");
 		numeroSort(data);
 	}
 	
@@ -52,9 +53,9 @@ public class Exercici4 {
 	/*
 	Podriem tenir un sol parametre a "lecturadia", nomes el mes, i que sigui aquesta
 	mateixa funcio la que cridi l'any i el demani, pero seria un embolic ja que si
-	nomes es es volgues llegir el dia, tambe llegiria l'any per defecte. 
-	D'aquesta manera no nomes es mante mes organitzat, sino que evitem que la funcio
-	faci una altra crida
+	nomes es es volgues llegir el dia, tambe es llegiria l'any per defecte. 
+	D'aquesta manera no nomes es mante mes organitzat, sino que evitem que dins de la
+	funcio es faci una altra crida.
 	*/
 	public static int lecturadia (int mes, int any){
 		int dia, max;
@@ -76,22 +77,22 @@ public class Exercici4 {
 	}
 	
 	public static void numeroSort (long data){
-		int nombretotaldigits, nombresort = 0, dataint, posiciodigit; //canviar nombretotaldigits per posiciodigit
+		int nombretotaldigits, nombresort = 0, dataint, posiciodigit;
 		dataint = (int) data;
 		nombretotaldigits = Exercici3.numDigits(dataint);
-		for (posiciodigit = nombretotaldigits; posiciodigit >= 0; posiciodigit--){ //igualem posicio per ferho mes clar i per l'if que vindra
+		for (posiciodigit = nombretotaldigits; posiciodigit >= 0; posiciodigit--){
+			//He igualat posiciodigit per fer-ho mes clar i per l'if que vindra
 			nombresort = nombresort + Exercici3.digit(dataint, posiciodigit);
 			/*
 			Es possible que aqui "nombresort" tingui dos digits, per tant els separem.
-			Sabem tambe que no en pot tenir mes de 2, de manera que no cal que cridem
-			cap funcio, fem l'operacio directament per estalviar-nos temps d'execucio
+			Sabem tambe que no en pot tenir mes de 2, i que la suma dels 2 digits per separat
+			mai sera major a 9, de manera que no cal que cridem cap funcio, fem l'operacio
+			directament per estalviar-nos temps d'execucio.
 			*/
 			if (nombresort > 9){
 			nombresort = nombresort/10 + nombresort%10;
 			}
 		}
-		System.out.println("El teu numero es " + nombresort);
-		
+		System.out.println(nombresort);
 	}
-	
 }
