@@ -2,251 +2,226 @@ package Exercici1;
 
 import Keyboard.*;
 
-public class Exercici1 {
-	public static void main (String args[]){
+public class Exercici1{
+		public static void main (String args[]){
+			int i = 0, nRespostesEncertades, quina, opcio = 0, correcte; //variables contadores
+			char resposta,veureRespostes;
+			double percentatge;
+			
+			//Creem les taules
+			String preguntes[] = new String [20];
+			String RespostaCorrecta[] = new String[20];
+			String RespostaIncorrecta1[] = new String[20];
+			String RespostaIncorrecta2[] = new String [20];
+			
+			//Creem la taula sortides on hi haura els index de les preguntes que ja han sortit
+			int sortides[] = new int[5];
+			
+			//Omplenem les taules
+			omplena(preguntes,RespostaCorrecta,RespostaIncorrecta1,RespostaIncorrecta2);
+			
+			do{
+				System.out.println("JUGUEM!!!!");
+				System.out.println("**********");
+				nRespostesEncertades=0;
+					for(i = 0; i < 5; i++){
 
-		//Declarem i emplenem les dades, preguntes i respostes: (es podria colocar 19 com a variable
-		String preguntes[], RespostaCorrecta[], RespostaIncorrecta1[], RespostaIncorrecta2[];
-		preguntes = new String[20];
-		RespostaCorrecta = new String[20];
-		RespostaIncorrecta1 = new String[20];
-		RespostaIncorrecta2 = new String[20];
-		
-		//Per comencar, cridem a omplena per que ens ompli les taules.
-		int quina, quantes, numeracioCorrecta, sortides[], respostausuari;
-		quantes = 0;
-		sortides = new int [5];
-		
-		//omplenem totes les preguntes i respostes
-		omplena (preguntes, RespostaCorrecta, RespostaIncorrecta1, RespostaIncorrecta2);
-		
-		
-		int nombrepartides, preguntesencertades = 0; double percentatgecorrecte; char continua, veupreguntes; boolean fidejoc = false;
-		for (nombrepartides = 1; nombrepartides <= 12 && fidejoc == false; nombrepartides++){
-			preguntesencertades = 0;
-			for (quantes = 0; quantes < 5; quantes++){
-			
-			
-			//loop, cada pregunta individualment passara:
-				
-			//escollim aleatoriament un index de la pregunta (entre les 20)
-				quina = quina();
-				
-				//si la pregunta ja ha aparegut (es a dir, que es troba a dins del vector sortides[5]), genera
-				//una altra aleatoria. Aixi fins que generi una que no hagi aparegut
-				//ES PODRIA FER DO WHILE!
-				while (repetida(sortides, quantes, quina) == true){
-					quina = quina();
+						//Generem un nombre aleatori de l'index: del 0 al 19
+						do quina = aleatori(0, 19);
+						while(repetida(sortides, i, quina));
+						correcte = mostra(preguntes, RespostaCorrecta, RespostaIncorrecta1, RespostaIncorrecta2, quina);
+						afegir(sortides, i, quina);
+						System.out.println("Indica la resposta correcta 1 ó 2 ó 3");
+						
+						//Per evitar que el s'aturi si l'usuari introdueix una tecla erronea, nomes proseguirem si l'opcio existeix
+						opcio = Keyboard.readInt();
+						while (opcio != 1 && opcio != 2 && opcio != 3) opcio = Keyboard.readInt();
+						if(opcio == correcte){
+							System.out.println("Encertat");
+							nRespostesEncertades++;
+						}else System.out.println("NO encertat");	
+					}
+				percentatge = (nRespostesEncertades / 5.0) * 100;
+				System.out.println("FI JOC: has tingut un percentatge d'encert de " + percentatge + "%");
+				System.out.println("****************************************************");
+				System.out.println("Vols jugar altre partida? (s/n)");
+				resposta = Keyboard.readChar();
+				while (resposta != 's' && resposta != 'S' && resposta != 'n' && resposta != 'N') resposta = Keyboard.readChar();
+				if((resposta == 's' || resposta == 'S') && percentatge < 20){
+					System.out.println("Vols veure totes les preguntes? (s/n)");
+					veureRespostes = Keyboard.readChar();
+					while (veureRespostes != 's' && veureRespostes != 'S' && veureRespostes != 'n' && veureRespostes != 'N') resposta = Keyboard.readChar();
+					if(veureRespostes == 's' || veureRespostes == 'S') totesCorrectes(preguntes,RespostaCorrecta);
 				}
-				sortides[quantes] = afegir(sortides, quantes, quina);
-				
-				//obtenim on es troba la resposta correcta alhora que mostrem la pregunta i les respostes, de manera aleatoria
-				numeracioCorrecta = mostra(preguntes, RespostaCorrecta, RespostaIncorrecta1, RespostaIncorrecta2, quina);
-				System.out.println("Indica la resposta correcta 1 o 2 o 3:");
-				respostausuari = Keyboard.readInt();
-				if (respostausuari == numeracioCorrecta){
-					System.out.println("Encertat");
-					preguntesencertades++;
-				}else System.out.println("NO encertat");
-				System.out.println(sortides[quantes]);
-				
-			}//finalloop;
-				//System.out.println(sortides[quina]);
+			}while((resposta == 's' || resposta == 'S') && i < 12);
+		}
+		
+	private static void omplena(String []preguntes,String []RespostaCorrecta,String [] RespostaIncorrecta1,String[] RespostaIncorrecta2){
 			
-				// TESTER:
-					// el nombre que ha de sortir es la pregunta -1, 
-					// ja que la taula comenca amb index 0 i el text de la pregunta en 1
-				System.out.println("Ara del 0 al 20 (sortides)");
-				System.out.println(sortides[0]);
-				System.out.println(sortides[1]);
-				System.out.println(sortides[2]);
-				System.out.println(sortides[3]);
-				System.out.println(sortides[4]);
-				// TESTER ENDED
+			//Omplena les preguntes i respostes
+			preguntes[0] = "Quin es el nom de la xarxa d'ordinadors des de la qual es va originar Internet?";
+			preguntes[1] = "A quin any va neixer el cercador de Google?";
+			preguntes[2] = "Qui es el Director Executiu de SpaceX?";
+			preguntes[3] = "Qui es el Director Executiu de Tesla Motors?";
+			preguntes[4] = "Qui es el President (Chairman) de SolarCity?";
+			preguntes[5] = "Qui fou el fundador de Oracle Corporation";
+			preguntes[6] = "Qui fou el fundador de Amazon, Inc.?";
+			preguntes[7] = "Qui fou el fundador de Quora, Inc.";
+			preguntes[8] = "El primer model de cotxe Tesla va ser el...";
+			preguntes[9] = "El mes rapid que el cotxe Tesla Model S arriba als 100km/h es en...";
+			preguntes[10] = "OpenAI es una empresa...";
+			preguntes[11] = "Deep Learning es un sinonim modern de les aplicacions de les...";
+			preguntes[12] = "Es poden crear xarxes neuronals simples en Python?";
+			preguntes[13] = "Verse es una aplicacio...";
+			preguntes[14] = "L'AI (Inteligencia Artificial) es divideix en...";
+			preguntes[15] = "Els tipus de coneixement que podem obtenir gracies al Machine Learning son...";
+			preguntes[16] = "NO es una aplicacio del Machine Learning...";
+			preguntes[17] = "Elon Musk disposa d'un patrimoni aproximat de...";
+			preguntes[18] = "Halcyon Molecular es una empresa de...";
+			preguntes[19] = "Elon Musk viu a...";
+			
+			RespostaCorrecta[0] = "Arpanet";
+			RespostaCorrecta[1] = "1998";
+			RespostaCorrecta[2] = "Elon Musk";
+			RespostaCorrecta[3] = "Elon Musk";
+			RespostaCorrecta[4] = "Elon Musk";
+			RespostaCorrecta[5] = "Lawrence J. Ellison";
+			RespostaCorrecta[6] = "Jeff Bezos";
+			RespostaCorrecta[7] = "Adam d'Angelo";
+			RespostaCorrecta[8] = "Roadster";
+			RespostaCorrecta[9] = "2.7 segons";
+			RespostaCorrecta[10] = "Sense anim de lucre";
+			RespostaCorrecta[11] = "Xarxes neuronals";
+			RespostaCorrecta[12] = "Si";
+			RespostaCorrecta[13] = "De pagaments per mobil";
+			RespostaCorrecta[14] = "2 escoles de pensament: AI convencional i AI computacional";
+			RespostaCorrecta[15] = "Creixement, reestructuracio i ajustament";
+			RespostaCorrecta[16] = "Les calculadores cientifiques";
+			RespostaCorrecta[17] = "$ 13.500.000.000";
+			RespostaCorrecta[18] = "Biotecnologia";
+			RespostaCorrecta[19] = "Bel-Air, California";
+			
+			RespostaIncorrecta1[0] = "Meritasium";
+			RespostaIncorrecta1[1] = "1899";
+			RespostaIncorrecta1[2] = "Peter Thiel";
+			RespostaIncorrecta1[3] = "Richard Brandson";
+			RespostaIncorrecta1[4] = "Warren Buffet";
+			RespostaIncorrecta1[5] = "Charles G. Koch";
+			RespostaIncorrecta1[6] = "Elon Musk";
+			RespostaIncorrecta1[7] = "Mark Zuckerberg";
+			RespostaIncorrecta1[8] = "Model S";
+			RespostaIncorrecta1[9] = "5.75 segons";
+			RespostaIncorrecta1[10] = "Basada a Miami";
+			RespostaIncorrecta1[11] = "Xarxes d'Internet";
+			RespostaIncorrecta1[12] = "No";
+			RespostaIncorrecta1[13] = "Que permet organitzar els deures de l'universitat";
+			RespostaIncorrecta1[14] = "No contempla cap divisio";
+			RespostaIncorrecta1[15] = "Creixement, orientacio i capacitacio";
+			RespostaIncorrecta1[16] = "La classificacio de sequencies d'ADN";
+			RespostaIncorrecta1[17] = "$ 20.000.000";
+			RespostaIncorrecta1[18] = "Aeronautica";
+			RespostaIncorrecta1[19] = "Las Vegas, Nevada";
+			
+			RespostaIncorrecta2[0] = "ComptNet";
+			RespostaIncorrecta2[1] = "1994";
+			RespostaIncorrecta2[2]= "Jeff Bezos";
+			RespostaIncorrecta2[3] = "Max Levchin";
+			RespostaIncorrecta2[4] = "Martin Eberhad";
+			RespostaIncorrecta2[5] = "Adam d'Angelo";
+			RespostaIncorrecta2[6] = "Bob Miner";
+			RespostaIncorrecta2[7] = "Mark Cuban";
+			RespostaIncorrecta2[8] = "Model 3";
+			RespostaIncorrecta2[9] = "4.98 segons";
+			RespostaIncorrecta2[10] = "Propietat de la NASA";
+			RespostaIncorrecta2[11] = "Conjunt de dispositiu d'IoT";
+			RespostaIncorrecta2[12] = "Ni en Phyton ni en cap altre llenguatge";
+			RespostaIncorrecta2[13] = "Basada en jocs interactius";
+			RespostaIncorrecta2[14] = "Unicament en la AI computacional";
+			RespostaIncorrecta2[15] = "Composicio analitica i ajustament";
+			RespostaIncorrecta2[16] = "El reconeixement de veu";
+			RespostaIncorrecta2[17] = "$ 800.000";
+			RespostaIncorrecta2[18] = "Desenvolupament d'interficies de software";
+			RespostaIncorrecta2[19] = "Chicago, Illinois";	
 		}
-
-		percentatgecorrecte = preguntesencertades / 5 * 100; 
-		System.out.println("FI JOC: has tingut un percentatge d'encert de " + percentatgecorrecte);
-		System.out.println("***************************************************");
-		System.out.println("Vols jugar altre partida?");
-		continua = Keyboard.readChar();
-		if (continua == 's' || continua == 'S'){
-			if (percentatgecorrecte < 20){
-				System.out.println("Vols veure totes les preguntes? (s/n)");
-				veupreguntes = Keyboard.readChar();
-				if (veupreguntes == 's' || veupreguntes == 'S'){
-					totesCorrectes (preguntes, RespostaCorrecta);
-				}
-
-			}
-		}
-		else fidejoc = true;
 		
+	private static int mostra(String []preguntes,String []RespostaCorrecta,String [] RespostaIncorrecta1,String[] RespostaIncorrecta2,int quina){
+			int correcte = 0;
+			System.out.println("PREGUNTA: " + preguntes[quina]);
+			int opcio= aleatori(1, 6);
+			switch(opcio){
+				case 1:
+					System.out.println("Resposta 1: " + RespostaCorrecta[quina]);
+					System.out.println("Resposta 2: " + RespostaIncorrecta1[quina]); 
+					System.out.println("Resposta 3: " + RespostaIncorrecta2[quina]);
+					correcte = 1;
+				break;
+				case 2:
+					System.out.println("Resposta 1: " + RespostaCorrecta[quina]); 
+					System.out.println("Resposta 2: " + RespostaIncorrecta2[quina]);
+					System.out.println("Resposta 3: " + RespostaIncorrecta1[quina]);
+					correcte = 1;
+				break;
+				case 3:
+					System.out.println("Resposta 1: " + RespostaIncorrecta1[quina]);
+					System.out.println("Resposta 2: " + RespostaCorrecta[quina]);
+					System.out.println("Resposta 3: " + RespostaIncorrecta2[quina]);
+					correcte = 2;
+				break;
+				case 4:
+					System.out.println("Resposta 1: " + RespostaIncorrecta2[quina]);
+					System.out.println("Resposta 2: " + RespostaCorrecta[quina]);
+					System.out.println("Resposta 3: " + RespostaIncorrecta1[quina]);
+					correcte = 2;	
+				break;
+				case 5:
+					System.out.println("Resposta 1: " + RespostaIncorrecta1[quina]);
+					System.out.println("Resposta 2: " + RespostaIncorrecta2[quina]); 
+					System.out.println("Resposta 3: " + RespostaCorrecta[quina]);
+					correcte = 3;
+				break;
+				case 6: 
+					System.out.println("Resposta 1: " + RespostaIncorrecta2[quina]);
+					System.out.println("Resposta 2: " + RespostaIncorrecta1[quina]);
+					System.out.println("Resposta 3: " + RespostaCorrecta[quina]);
+					correcte = 3;
+				break;
+			}return correcte;
 	}
-	
-	
-	//FUNCIO OBLIGATORIA
-	private static void omplena (String preguntes[], String RespostaCorrecta[], String RespostaIncorrecta1[], String RespostaIncorrecta2[]){
 		
-		//Ara declarare el valor de cada pregunta i la seva resposta correcta
-		//Primer escriure les preguntes
-		preguntes[0] = "Pregunta numero 1";
-		preguntes[1] = "Pregutna numero 2";
-		preguntes[2] = "Pregunta numero 3";
-		preguntes[3] = "Pregunta numero 4";
-		preguntes[4] = "Pregunta numero 5";
-		preguntes[5] = "Pregutna numero 6";
-		preguntes[6] = "Pregunta numero 7";
-		preguntes[7] = "Pregunta numero 8";
-		preguntes[8] = "Pregunta numero 9";
-		preguntes[9] = "Pregutna numero 10";
-		preguntes[10] = "Pregunta numero 11";
-		preguntes[11] = "Pregunta numero 12";
-		preguntes[12] = "Pregunta numero 13";
-		preguntes[13] = "Pregutna numero 14";
-		preguntes[14] = "Pregunta numero 15";
-		preguntes[15] = "Pregunta numero 16";
-		preguntes[16] = "Pregunta numero 17";
-		preguntes[17] = "Pregutna numero 18";
-		preguntes[18] = "Pregunta numero 19";
-		preguntes[19] = "Pregunta numero 20";
-		
-		//Ara escriure les RespostaCorrecta
-		
-		RespostaCorrecta[0] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 1";
-		RespostaCorrecta[1] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 2";
-		RespostaCorrecta[2] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 3";
-		RespostaCorrecta[3] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 4";
-		RespostaCorrecta[4] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 5";
-		RespostaCorrecta[5] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 6";
-		RespostaCorrecta[6] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 7";
-		RespostaCorrecta[7] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 8";
-		RespostaCorrecta[8] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 9";
-		RespostaCorrecta[9] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 10";
-		RespostaCorrecta[10] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 11";
-		RespostaCorrecta[11] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 12";
-		RespostaCorrecta[12] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 13";
-		RespostaCorrecta[13] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 14";
-		RespostaCorrecta[14] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 15";
-		RespostaCorrecta[15] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 16";
-		RespostaCorrecta[16] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 17";
-		RespostaCorrecta[17] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 18";
-		RespostaCorrecta[18] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 19";
-		RespostaCorrecta[19] = "RESPOSTA CORRECTA A A PREGUNTA NUMERO 20";
-		
-		//Ara escriure les RespostaIncorrecta1
-		
-		RespostaIncorrecta1[0] = "Resposta Incorrecte 1 de la pregunta numero 1";
-		RespostaIncorrecta1[1] = "Resposta Incorrecte 1 de la pregunta numero 2";
-		RespostaIncorrecta1[2] = "Resposta Incorrecte 1 de la pregunta numero 3";
-		RespostaIncorrecta1[3] = "Resposta Incorrecte 1 de la pregunta numero 4";
-		RespostaIncorrecta1[4] = "Resposta Incorrecte 1 de la pregunta numero 5";
-		RespostaIncorrecta1[5] = "Resposta Incorrecte 1 de la pregunta numero 6";
-		RespostaIncorrecta1[6] = "Resposta Incorrecte 1 de la pregunta numero 7";
-		RespostaIncorrecta1[7] = "Resposta Incorrecte 1 de la pregunta numero 8";
-		RespostaIncorrecta1[8] = "Resposta Incorrecte 1 de la pregunta numero 9";
-		RespostaIncorrecta1[9] = "Resposta Incorrecte 1 de la pregunta numero 10";
-		RespostaIncorrecta1[10] = "Resposta Incorrecte 1 de la pregunta numero 11";
-		RespostaIncorrecta1[11] = "Resposta Incorrecte 1 de la pregunta numero 12";
-		RespostaIncorrecta1[12] = "Resposta Incorrecte 1 de la pregunta numero 13";
-		RespostaIncorrecta1[13] = "Resposta Incorrecte 1 de la pregunta numero 14";
-		RespostaIncorrecta1[14] = "Resposta Incorrecte 1 de la pregunta numero 15";
-		RespostaIncorrecta1[15] = "Resposta Incorrecte 1 de la pregunta numero 16";
-		RespostaIncorrecta1[16] = "Resposta Incorrecte 1 de la pregunta numero 17";
-		RespostaIncorrecta1[17] = "Resposta Incorrecte 1 de la pregunta numero 18";
-		RespostaIncorrecta1[18] = "Resposta Incorrecte 1 de la pregunta numero 19";
-		RespostaIncorrecta1[19] = "Resposta Incorrecte 1 de la pregunta numero 20";
-		
-		//Ara escriure les RespostaIncorrecta2
-		
-		RespostaIncorrecta2[0] = "Resposta Incorrecte 2 de la pregunta numero 1";
-		RespostaIncorrecta2[1] = "Resposta Incorrecte 2 de la pregunta numero 2";
-		RespostaIncorrecta2[2]= "Resposta Incorrecte 2 de la pregunta numero 3";
-		RespostaIncorrecta2[3] = "Resposta Incorrecte 2 de la pregunta numero 4";
-		RespostaIncorrecta2[4] = "Resposta Incorrecte 2 de la pregunta numero 5";
-		RespostaIncorrecta2[5] = "Resposta Incorrecte 2 de la pregunta numero 6";
-		RespostaIncorrecta2[6] = "Resposta Incorrecte 2 de la pregunta numero 7";
-		RespostaIncorrecta2[7] = "Resposta Incorrecte 2 de la pregunta numero 8";
-		RespostaIncorrecta2[8] = "Resposta Incorrecte 2 de la pregunta numero 9";
-		RespostaIncorrecta2[9] = "Resposta Incorrecte 2 de la pregunta numero 10";
-		RespostaIncorrecta2[10] = "Resposta Incorrecte 2 de la pregunta numero 11";
-		RespostaIncorrecta2[11] = "Resposta Incorrecte 2 de la pregunta numero 12";
-		RespostaIncorrecta2[12] = "Resposta Incorrecte 2 de la pregunta numero 13";
-		RespostaIncorrecta2[13] = "Resposta Incorrecte 2 de la pregunta numero 14";
-		RespostaIncorrecta2[14] = "Resposta Incorrecte 2 de la pregunta numero 15";
-		RespostaIncorrecta2[15] = "Resposta Incorrecte 2 de la pregunta numero 16";
-		RespostaIncorrecta2[16] = "Resposta Incorrecte 2 de la pregunta numero 17";
-		RespostaIncorrecta2[17] = "Resposta Incorrecte 2 de la pregunta numero 18";
-		RespostaIncorrecta2[18] = "Resposta Incorrecte 2 de la pregunta numero 19";
-		RespostaIncorrecta2[19] = "Resposta Incorrecte 2 de la pregunta numero 20";
-	}
-	
-	//FUNCIO NO OBLIGATORIA
-	public static int quina (){
-		int quina;
-		quina = (int) Math.round(Math.random() * 19 + 1);
-		return quina;
-	}
-	
-	//es podria fer una funcio "aleatoria" que generes el nombre aleatori donat els parametres (en aquest cas 19 i 1)
-	// aixo permetria no haver de fer la funcio "aleatori", amb una ja valdria, pero suda
-
-	public static int aleatori(){ //funcio utilitzada per generar l'ordre de sortida de mostra
-		int nombrealeatori;
-		nombrealeatori = (int) Math.round(Math.random() * 2 + 1);
-		return nombrealeatori;
-	}
-	
-	//FUNCIO OBLIGATORIA
-	private static int mostra (String preguntes[], String RespostaCorrecta[], String RespostaIncorrecta1[], String RespostaIncorrecta2[], int quina){
-		int ordre, numeracioCorrecta = 0;
-		ordre = aleatori();
-		System.out.println(preguntes[quina]);
-		switch (ordre){
-			case 1: System.out.println(RespostaCorrecta[quina] + "\n" + RespostaIncorrecta1[quina] + "\n" + RespostaIncorrecta2[quina]);
-					numeracioCorrecta = 1;
-				break;
-			case 2: System.out.println(RespostaCorrecta[quina] + "\n" + RespostaIncorrecta2[quina] + "\n" + RespostaIncorrecta1[quina]);
-					numeracioCorrecta = 1;
-				break;
-			case 3: System.out.println(RespostaIncorrecta1[quina] + "\n" + RespostaCorrecta[quina] + "\n" + RespostaIncorrecta2[quina]);
-					numeracioCorrecta = 2;
-				break;
-			case 4: System.out.println(RespostaIncorrecta1[quina] + "\n" + RespostaIncorrecta2[quina] + "\n" + RespostaCorrecta[quina]);
-					numeracioCorrecta = 3;
-				break;
-			case 5: System.out.println(RespostaIncorrecta2[quina] + "\n" + RespostaIncorrecta1[quina] + "\n" + RespostaCorrecta[quina]);
-					numeracioCorrecta = 3;
-				break;
-			case 6: System.out.println(RespostaIncorrecta2[quina] + "\n" + RespostaCorrecta[quina] + "\n" + RespostaIncorrecta1[quina]);
-					numeracioCorrecta = 2;
-				break;
-		}return numeracioCorrecta;
-	}
-	
-	//FUNCIO OBLIGATORIA
 	private static boolean repetida (int sortides[], int quantes, int quina){
-		//Crearem un vector que guardi tots els numeros de les preguntes que ja han sortit.
-		//El tamany d'aquest vector sera del valor quantes
-		int posiciosortida;
-		boolean hasortit = false;
-		for (posiciosortida = 0; posiciosortida <= /*cal el "="?*/quantes; posiciosortida++){
-			if (sortides[posiciosortida] == quina) hasortit = true;
-		}return hasortit;
+		boolean trobada = false;
+		int i = 0;
+		while(i < quantes && !trobada){
+			if(sortides[i] == quina) trobada = true;
+			else i++;
+		}return trobada;
 	}
-	
-	//FUNCIO OBLIGATORIA
-	private static int afegir(int sortides[], int quantes, int quina){
+
+	private static int afegir (int sortides[], int quantes, int quina) {
 		sortides[quantes] = quina;
-		return quina;
+		return quantes++;
 	}
-	
-	//FUNCIO OBLIGATORIA (la fare al final) 
-	
+
 	private static void totesCorrectes (String preguntes[], String RespostaCorrecta[]){
-		/* 
-		crido alguna altra funcio o faig una de 0?
-		*/
+		System.out.println("\nPreguntes del joc i les seves corresponents respostes correctes\n");
+		for(int i = 0; i < 20; i++){
+			System.out.println(preguntes[i]);
+			System.out.println(RespostaCorrecta[i] + "\n");
+		}
 	}
-}
 	
+	//Creo una funcio que crea un numero aleatori entre dos nombres donats (inclosos)
+	//Aquesta funcio es molt mes precisa i aleatoria que no pas l'us generalitzat del "random * x + x"
+	//En aquest mateix paquet (Exercici1) es troba el fitxer "random.java", un programa que he desenvolupat on es demostra (per tal de 
+	// justificar la funcio que creo a continuacio) que el random no compleix les expectatives. Tambe es pot consultar a:
+	// https://github.com/ignasioliver/TCM/blob/master/FonamentsProgramacio/Practica5OliverIgnasi/src/Exercici1/random.java
+	public static int aleatori(int minim, int maxim){
+		double aleatori, nombreresultant;
+		int nombrefinal;
+		aleatori = Math.random();
+		maxim++;
+		nombreresultant = aleatori * (maxim - minim);
+		nombrefinal = (int) (nombreresultant + minim);
+		return nombrefinal;
+	}
+}	
