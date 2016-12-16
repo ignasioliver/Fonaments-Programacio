@@ -4,7 +4,7 @@ import Keyboard.*;
 
 public class Exercici1{
 		public static void main (String args[]){
-			int i = 0, nRespostesEncertades, quina, opcio = 0, correcte; //variables contadores
+			int i = 0, nRespostesEncertades, quina, opcio = 0, correcte;
 			char resposta,veureRespostes;
 			double percentatge;
 			
