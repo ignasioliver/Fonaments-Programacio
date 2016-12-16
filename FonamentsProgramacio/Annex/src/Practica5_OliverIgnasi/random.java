@@ -4,6 +4,7 @@ import Keyboard.Keyboard;
 
 public class random {
 	public static void main (String args[]){
+		//Aquest programa posa de manifest la irregularitat que ofereix l'us del random si no s'usa correctament
 		int i, mostra, un = 0, dos = 0, tres = 0, quatre = 0, cinc = 0, sis = 0;
 		System.out.println("Introdueix la mostra, el nombre de vegades a generar un numero aleatori [1, 6] (com mes gran mes trigara): ");
 		mostra = Keyboard.readInt();
