@@ -1,1 +1,8 @@
 Start by typing ghci in the prompt
+By default, the prompt is Prelude.
+If I want it to be gchi -as the book- type
+  :set prompt "ghci> "
+If I want to change its default to start it directly,
+create a .ghci file in the home folder and its content:
+  :set prompt "ghci> "
+  

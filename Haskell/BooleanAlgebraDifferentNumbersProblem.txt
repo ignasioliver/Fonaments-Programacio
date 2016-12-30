@@ -1,0 +1,7 @@
+When applying boolean Algebra between two numbers, as
+	5 == 5
+A problem occurs when 16 decimal-digits are achieved. E.g:
+	ghci>5 == 4.999999999999999
+	False
+	ghci>5 == 4.9999999999999999
+	True
