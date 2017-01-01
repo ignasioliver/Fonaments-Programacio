@@ -9,12 +9,14 @@ _______________________________________________________
 
 BASIC CONCEPTS:
 
-Laziness, etc
-
+- Laziness, etc
+- let is a keyword used to define a name in GHCi. Entering "let a = 1"
+  in GHCi is equivalent to writing a = 1 in a script, then loading it with :l
 _______________________________________________________
 
 FUNCTIONS:
 
+- functionName parameter = body
 - The order the funcitons get declared in a .hs file doesn't matter.
 - Defined functions can call each other.
 - An if in Haskell is not a statement, it is a expression:
@@ -25,3 +27,23 @@ FUNCTIONS:
   a strict version of a function (i.e. that it isn't lazy) or a
   slightly modified version of a function or a variable with a
   similar name.
+- Functions cannot start with capital Letter
+- A declaration such as "conanO'Brien" at "baby.hs" is not a function
+  since it doesn't take any parameters.It is a definition or a name, hence 
+  "conanO'Brien" and its content can be used interchangeably.
+
+_______________________________________________________
+
+LISTS:
+
+- Are homogenous: they store elements of the same type.
+- Are surrounded by square brackets and the list values are separated by commas:
+  (e.g., [1, 2, 3, 8, 9])
+- The use of the let keyword is really helfpulf when working with lists (see BASIC CONCEPTS)
+- CONCATENION: done with ++
+- We can use list functions on strings since "hey" is actually the same as the list
+  ['h','e','y'], and this will appear as "hey" as a whole, not as in number lists
+  -with commas separating each value.
+- CONS OPERATOR: ":" it adds a SINGLE value  -of the same type- into the beginning of a list.
+  It is really handy when working with huge lists: the ++ has to walk through the whole list,
+  while : doesn't since it adds the value at the beginning.
