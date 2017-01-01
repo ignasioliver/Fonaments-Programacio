@@ -40,10 +40,13 @@ LISTS:
 - Are surrounded by square brackets and the list values are separated by commas:
   (e.g., [1, 2, 3, 8, 9])
 - The use of the let keyword is really helfpulf when working with lists (see BASIC CONCEPTS)
-- CONCATENION: done with ++
+- CONCATENION: done with ++. All parameters (left and right) have to be of the same type:
+  i.e., if you just one to ad a number to a list through ++ you cannot treat it like a : and
+  directly put the "number : [list]]", you actually have to treat the single number as a list. 
 - We can use list functions on strings since "hey" is actually the same as the list
   ['h','e','y'], and this will appear as "hey" as a whole, not as in number lists
   -with commas separating each value.
-- CONS OPERATOR: ":" it adds a SINGLE value  -of the same type- into the beginning of a list.
-  It is really handy when working with huge lists: the ++ has to walk through the whole list,
-  while : doesn't since it adds the value at the beginning.
+- CONS OPERATOR: ":" it adds a SINGLE value  -of the same category, not exact same type- into
+  the beginning of a list. It is really handy when working with huge lists: the ++ has
+  to walk through the whole list, while : doesn't since it adds the value at the beginning.
+  
