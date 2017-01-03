@@ -49,4 +49,10 @@ LISTS:
 - CONS OPERATOR: ":" it adds a SINGLE value  -of the same category, not exact same type- into
   the beginning of a list. It is really handy when working with huge lists: the ++ has
   to walk through the whole list, while : doesn't since it adds the value at the beginning.
-  
+- [1,2,3,4] is exactly the same as 1:2:3:4:[]. Why? "[]" prepend into "4", equalling "[4]".
+  Then, "3" prepends into "[4]", and so on.
+- [] is an empty list.
+- [[]] is a list that contains one empty list.
+- [[],[],[]] is a list that contains three empty lists.
+- Accessing lists elements: through the !! operator. THe indicces start at 0.
+- Lists can contain lists as elements, and lists can contain lists tat contain lists, and so on.
