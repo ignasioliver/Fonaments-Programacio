@@ -67,3 +67,6 @@ LIST FUNCTIONS:
 - init [1, 2, 3]. Returns [1, 2], it is, everything except the last element.
 BE CAREFUL WHEN USING head, tail, last, int , AN NEVER USE THEM ON EMPTY LISTS: that's an error
 that isn't caughtat compile time, so it will bring problems if we don't detect them.
+- lenght [1, 2, 3]. Returns 3, the list' lenght. STARTS AT 1, not at 0.
+- null [1,2,3]. Returns "false", since the list != null. Hence, "null []" returns "false".
+- reverse [1,2,3]. Returns [3,2,1], as it name states.
