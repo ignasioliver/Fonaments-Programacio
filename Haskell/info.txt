@@ -56,3 +56,15 @@ LISTS:
 - [[],[],[]] is a list that contains three empty lists.
 - Accessing lists elements: through the !! operator. THe indicces start at 0.
 - Lists can contain lists as elements, and lists can contain lists tat contain lists, and so on.
+- Comparing lists (<, >, <=, >=). Both lists have to be of the same type. It compares them from
+  left to right, one number at a time, and once differing numbers are found, a conclusion is made
+  (true, false). A nonempty list is ALWAYS considered to be greater than an empty list.
+  
+LIST FUNCTIONS:
+- head [1, 2, 3]. Returns 1 (the list' head, or first element).
+- tail [1, 2, 3]. Returns [2, 3] (the whole list' content exceptuating the head).
+- last [1, 2, 3]. Returns 3 (the list' last element).
+- init [1, 2, 3]. Returns [1, 2], it is, everything except the last element.
+BE CAREFUL WHEN USING head, tail, last, int , AN NEVER USE THEM ON EMPTY LISTS: that's an error
+that isn't caughtat compile time, so it will bring problems if we don't detect them.
+- lenght [1, 2, 3]. Returns 3, the list' lenght. STARTS AT 1, not at 0.
