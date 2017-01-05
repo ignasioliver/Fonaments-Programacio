@@ -70,7 +70,19 @@ that isn't caughtat compile time, so it will bring problems if we don't detect t
 - lenght [1, 2, 3]. Returns 3, the list' lenght. STARTS AT 1, not at 0.
 - null [1,2,3]. Returns "false", since the list != null. Hence, "null []" returns "false".
 - reverse [1,2,3]. Returns [3,2,1], as it name states.
-
+- take 2 [1,2,3]. Returns [1,2], since the function takes two parameters -2 and [1,2,3] in this case-
+  and extracts the specified number elements from the beginning of the list. take 0 [1,2] returns [].
+  take 5 [1,2] returns [1,2]
+- drop 2 [1,2,3]. Returns [2,3] since the function takes two parameters -2 and [1,2,3] in this case-
+  and drops the specified number elements from the beginning of the list. drop 0 [1,2] returns [1,2].
+  drop 9 [1,2] returns [].
+- minimum [1,2,3]. Returns 1.
+- maximum [1,2,3]. Returns 3.
+- sum [1,2,3]. Returns 6.
+- product [1,2,3,4]. Returns 24. 
+- elem 2 [1,2,3]. Returns True because "2" is an element of the list. It is usually called as an infix
+  function because is easier to read, such as 2 `elem` [1,2,3].
+  
 _______________________________________________________
 
-TO DO: Take notes of the first part of the first chapter.
+TO DO: Take notes of the first part of the first chapter. Infix functions, boolean values, etc.
