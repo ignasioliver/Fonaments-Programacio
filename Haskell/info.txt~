@@ -86,3 +86,5 @@ that isn't caughtat compile time, so it will bring problems if we don't detect t
 _______________________________________________________
 
 TO DO: Take notes of the first part of the first chapter. Infix functions, boolean values, etc.
+- Boolean values: True and False.
+- Boolean operators: &&, ||, not, ==, /=
