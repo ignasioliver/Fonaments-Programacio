@@ -7,6 +7,25 @@ create a .ghci file in the home folder and its content:
   :set prompt "ghci> "
 _______________________________________________________
 
+INTRO:
+
+HASKELL
+
+Is a purely functional programming language, so:
+- You don't wrtie what to do - you write what stuff is.
+- Operations are expressed via functions.
+- Variable values are permanent.
+- A function has no side effects, property called referential transparency.
+
+Haskell is:
+- Lazy: it executes a function when it needs tpo show the result.
+- Statically typed: the compiler knows which piece is a string, number, etc.
+- Has type inference: you don't have to explicity label every piece of code with a type,
+  Haskell figures it out.
+- Is elegant and concise since it uses a lot of high-level concepts, so programs are usually
+  shorter than thei imperative equivalents.
+_______________________________________________________
+
 BASIC CONCEPTS:
 
 - Laziness, etc
