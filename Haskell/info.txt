@@ -107,3 +107,8 @@ _______________________________________________________
 TO DO: Take notes of the first part of the first chapter. Infix functions, boolean values, etc.
 - Boolean values: True and False.
 - Boolean operators: &&, ||, not, ==, /=
+
+DOUBTS:
+
+- What happens if I load multiple .hs files and they have the same named functions?
+  When calling a function, which one gets executed? The last file load or load?
