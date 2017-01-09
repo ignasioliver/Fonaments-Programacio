@@ -104,7 +104,7 @@ that isn't caughtat compile time, so it will bring problems if we don't detect t
   
 RANGES:
 - Ranges are used to make lists composed of elements that can be enumerated, or counted off in order.
-
+- Syntax: [firstnumber .. last number]. This will show all the elements between them.
 _______________________________________________________
 
 TO DO: Take notes of the first part of the first chapter. Infix functions, boolean values, etc.
