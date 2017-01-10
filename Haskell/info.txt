@@ -105,7 +105,14 @@ that isn't caughtat compile time, so it will bring problems if we don't detect t
 RANGES:
 - Ranges are used to make lists composed of elements that can be enumerated, or counted off in order.
 - [firstnumber/letter .. last number/letter]. This will show all the elements between them.
-- 
+- To specify a step between the numbers of the list: [firstnumber, secondnumber .. lastnumber].
+  - Example: [2,4..10] will ouptut [2,4,6,8,10].
+  - You only can write two numbers to set the step, as in the example above. For this reason, some
+    unarithmetic sequences can be ambiguous.
+  - To make a lost from a high numebr to a lower one it is mandatory to set an step.
+    E.g., [10..1] will create an empty list since Haskell goes from down to up.
+    Instead, [10,9..1] will be fine: [10,9,8,7,6,5,4,3,2,1].
+
 _______________________________________________________
 
 TO DO: Take notes of the first part of the first chapter. Infix functions, boolean values, etc.
