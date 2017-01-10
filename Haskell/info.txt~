@@ -110,7 +110,11 @@ RANGES:
   - You only can write two numbers to set the step, as in the example above. For this reason, some
     unarithmetic sequences can be ambiguous.
   - To make a lost from a high numebr to a lower one it is mandatory to set an step.
-    E.g., [10..1] won't work, since Haskell goes from down to up. Instead, [10,9..1] will be fine.
+    E.g., [10..1] will create an empty list since Haskell goes from down to up.
+    Instead, [10,9..1] will be fine: [10,9,8,7,6,5,4,3,2,1].
+- By not specifying an upper limit, ranges can be infinite: [1..]
+- Operations are okay with ranges: [1,2..20*2]
+- Ranges can totally be parameters of list functions: sum [1..20*2] = 820 
 
 _______________________________________________________
 

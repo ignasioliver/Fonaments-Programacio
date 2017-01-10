@@ -112,6 +112,13 @@ RANGES:
   - To make a lost from a high numebr to a lower one it is mandatory to set an step.
     E.g., [10..1] will create an empty list since Haskell goes from down to up.
     Instead, [10,9..1] will be fine: [10,9,8,7,6,5,4,3,2,1].
+- By not specifying an upper limit, ranges can be infinite: [1..]
+- Operations are okay with ranges: [1,2..20*2].
+- Ranges can totally be parameters of list functions: sum [1..20*2] = 820
+- The use of the "take" function is particularly handy when using an inifinite list: since Haskell
+  is lazy, it will only calculate the number of numbers specified at take.
+  E.g.: take 7 [9,293..] = [9,293,577,861,1145,1429,1713].
+
 
 _______________________________________________________
 
