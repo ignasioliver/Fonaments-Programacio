@@ -127,6 +127,12 @@ RANGES:
   E.g.: [0.1,0.4..1] = [0.1,0.4,0.7000000000000001,1.0].
   
 LIST COMPREHENSIONS
+- List comprehensions allows writing the mathematical cponcept of set comprehensions.
+- take [2,4..] = [x*2 | x <- [1..10]]. Why?
+  - x <- [1..10]] = draw the elements from 1 to 10. x takes on the value of each element that is drawn in this same range ([1..10]).
+  - x*2 = output of the list comprehension.
+- List comprehensions are really handy if we add conditions (predicates). Sintaxically, predicates go at the end of the list and are separated by a comma.  
+
 _______________________________________________________
 
 TO DO: Take notes of the first part of the first chapter. Infix functions, boolean values, etc.
